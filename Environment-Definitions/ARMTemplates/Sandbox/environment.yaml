@@ -1,5 +1,8 @@
 name: Sandbox
 summary: Sandbox environment
-description: Deploys a sandbox environment
+description: Deploys a sandbox environment with a storage account
 runner: ARM
 templatePath: azuredeploy.json
+parameters:
+  storageAccountName: sandboxstorage${{uniqueString()}}
+  location: EastUS
