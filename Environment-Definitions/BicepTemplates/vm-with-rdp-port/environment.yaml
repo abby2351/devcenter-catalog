@@ -3,7 +3,7 @@ name: WindowsVM
 summary: Deploys a Windows virtual machine with secure boot, trusted launch, and public RDP access.
 description: Provision a secure Windows VM with load-balanced public IP and boot diagnostics enabled via Storage Account.
 runner: Bicep
-templatePath: main.bicep
+templatePath: azuredeploy.json
 parameters:
 - id: vmName
   name: Virtual Machine Name
@@ -62,4 +62,4 @@ parameters:
   description: Azure location for resource deployment.
   type: string
   default: EastUS
-runner: Bicep
+runner: ARM
