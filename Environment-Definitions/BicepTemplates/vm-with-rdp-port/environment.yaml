@@ -62,3 +62,4 @@ parameters:
   description: Azure location for resource deployment.
   type: string
   default: EastUS
+runner: Bicep
