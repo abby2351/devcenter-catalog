@@ -1,1 +1,64 @@
 
+name: WindowsVM
+summary: Deploys a Windows virtual machine with secure boot, trusted launch, and public RDP access.
+description: Provision a secure Windows VM with load-balanced public IP and boot diagnostics enabled via Storage Account.
+runner: Bicep
+templatePath: main.bicep
+parameters:
+- id: vmName
+  name: Virtual Machine Name
+  description: The name assigned to the virtual machine.
+  type: string
+  default: sandbox-vm
+- id: dnsLabelPrefix
+  name: Public DNS Label
+  description: DNS label used for the public IP (e.g., 'sandboxvm' creates 'sandboxvm.<region>.cloudapp.azure.com').
+  type: string
+  default: sandboxvm
+- id: adminUsername
+  name: Admin Username
+  description: Login username for the VM.
+  type: string
+  default: azureUser
+- id: adminPassword
+  name: Admin Password
+  description: Password for the VM administrator account.
+  type: securestring
+- id: vmSize
+  name: VM Size
+  description: Azure SKU for the VM size.
+  type: string
+  default: Standard_D2s_v3
+  allowed:
+    - Standard_B2s
+    - Standard_D2s_v3
+    - Standard_DS1_v2
+    - Standard_E2s_v3
+- id: OSVersion
+  name: Windows OS SKU
+  description: Fully patched Windows Server image.
+  type: string
+  default: 2022-datacenter-azure-edition
+  allowed:
+    - 2019-datacenter-gensecond
+    - 2019-datacenter-with-containers-g2
+    - 2022-datacenter-azure-edition
+    - 2022-datacenter-smalldisk-g2
+- id: rdpPort
+  name: Public RDP Port
+  description: Custom public port to access the VM over RDP.
+  type: int
+  default: 50001
+- id: securityType
+  name: VM Security Type
+  description: Enables Trusted Launch or Standard Security Profile.
+  type: string
+  default: TrustedLaunch
+  allowed:
+    - Standard
+    - TrustedLaunch
+- id: location
+  name: Deployment Region
+  description: Azure location for resource deployment.
+  type: string
+  default: EastUS
