@@ -1,7 +1,7 @@
 name: StaticWebSite
 summary: This is an App Configuration deployment using Bicep.
 description: Deploys an static web site.
-templatePath: staticwebsite.bicep
+templatePath: staticwebsite.json
 parameters:
 - id: "name"
   name: "name"
