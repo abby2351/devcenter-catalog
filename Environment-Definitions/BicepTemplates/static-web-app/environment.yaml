@@ -13,4 +13,4 @@ parameters:
   description: "Location to deploy the environment resources"
   default: "westus3"
   type: "string"
-runner: Bicep
+runner: ARM
